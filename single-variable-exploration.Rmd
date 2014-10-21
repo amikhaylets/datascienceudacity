@@ -4,7 +4,6 @@ Lesson 3
 ***
 
 ### Pseudo-Facebook User Data
-Notes:
 
 ```{r Pseudo-Facebook User Data}
 getwd()
@@ -15,7 +14,6 @@ pf <- read.csv('pseudo_facebook.tsv', sep = "\t")
 ***
 
 ### Histogram of Users' Birthdays
-Notes:
 
 ```{r Histogram of Users\' Birthdays}
 install.packages('ggplot2')
@@ -23,8 +21,8 @@ library(ggplot2)
 ```
 
 ***
+
 ### Faceting
-Notes:
 
 ```{r Faceting}
 qplot(data = pf, x = dob_day) +
@@ -42,8 +40,8 @@ ggplot(data = pf, aes(x = friend_count)) +
 
 ```
 
-
 ### Faceting Friend Count
+
 ```{r Faceting Friend Count}
 # What code would you add to create a facet the histogram by gender?
 # Add it to the code below.
@@ -56,7 +54,6 @@ qplot(x = friend_count, data = pf, binwidth = 10) +
 ***
 
 ### Omitting NA Values and Statistics 'by' Gender
-Notes:
 
 ```{r Statistics \'by\' Gender}
 qplot(x = friend_count, data = subset(pf, !is.na(gender)), binwidth = 10) +
@@ -71,7 +68,6 @@ by(pf$friend_count, pf$gender, summary)
 ***
 
 ### Tenure
-Notes:
 
 ```{r Tenure}
 qplot(data = pf, x = tenure, 
@@ -94,8 +90,8 @@ ggplot(aes(x = tenure/365), data = pf) +
 ```
 
 ***
+
 ### The Spread of Memes and Add a Scaling Layer
-Notes:
 
 ```{r Add a Scaling Layer}
 install.packages("gridExtra")
@@ -111,7 +107,6 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
 ***
 
-
 ### Frequency Polygons
 
 ```{r Frequency Polygons}
@@ -121,17 +116,14 @@ grid.arrange(p1, p2, p3, ncol = 1)
 ***
 
 ### Likes on the Web
-Notes:
 
 ```{r Likes on the Web}
 
 ```
 
-
 ***
 
 ### Box Plots
-Notes:
 
 ```{r Box Plots}
 
@@ -146,7 +138,6 @@ Notes:
 ***
 
 ### Box Plots, Quartiles, and Friendships
-Notes:
 
 ```{r Box Plots, Quartiles, and Friendships}
 
@@ -165,20 +156,7 @@ Response:
 ***
 
 ### Getting Logical
-Notes:
 
 ```{r Getting Logical}
 
 ```
-
-Response:
-
-***
-
-### Analyzing One Variable
-Reflection:
-
-***
-
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
