@@ -98,6 +98,14 @@ ggplot(aes(x = tenure/365), data = pf) +
 Notes:
 
 ```{r Add a Scaling Layer}
+install.packages("gridExtra")
+library(gridExtra)
+
+p1 <- qplot(x = friend_count, data = pf)
+p2 <- qplot(x = log10(friend_count+1), data = pf)
+p3 <- qplot(x = sqrt(friend_count), data = pf)
+
+grid.arrange(p1, p2, p3, ncol = 1)
 
 ```
 
