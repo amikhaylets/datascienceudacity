@@ -87,12 +87,22 @@ qplot(x = price, data=diamonds, binwidth = 500) +
 
 ### Task 7 "Price by Cut"
 ```{r}
+#Which cut has the highest priced diamond?
+by(diamonds$price, diamonds$cut, max)
+
+#Which cut has the lowest priced diamond?
+by(diamonds$price, diamonds$cut, min)
+
+#Which cut has the lowest median price?
+by(diamonds$price, diamonds$cut, median)
 
 ```
 
 ### Task 8 "Scales and Multiple Histograms"
 ```{r}
-
+qplot(x = price, data=diamonds, binwidth = 500) +
+  geom_histogram() +
+  facet_wrap(~cut, ncol=2, scales="free_y")
 ```
 
 ### Task 9 "Price per Carat by Cut"
