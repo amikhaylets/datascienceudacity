@@ -142,17 +142,32 @@ qplot(x=cut, y=price, data=diamonds, geom="boxplot", fill=cut) +
 
 ### Task 11 "Interquartile Range (IQR)"
 ```{r}
-
+by(diamonds$price, diamonds$color, summary)
+by(diamonds$price, diamonds$color, IQR)
 ```
 
 ### Task 12 "Price per Carats Box and Plots by Color"
 ```{r}
+qplot(data=diamonds, x=color, y=price/carat) +
+  geom_boxplot(fill="darkgrey") +
+  coord_cartesian(ylim=c(2000,6000)) +
+  xlab('Color of diamonds') + ylab('Price/Carat relation of the diamonds') +
+  ggtitle('Middle 50% of the price distributions from the best to the worst colors of diamonds')
+
+uniform <- subset(diamonds,cut == "Ideal" & clarity == "IF" & carat < 1.2 & carat > 0.8)
+qplot(data=uniform, x=color, y=price/carat) +
+  geom_boxplot(fill="darkgrey")
 
 ```
 
 ### Task 13 "Carat frequency polygon"
 ```{r}
-
+qplot(data = diamonds, x = carat, 
+      binwidth = 0.1,
+      color = I('black'),
+      fill = I('darkgrey')) + 
+  scale_x_continuous(limits = c(0,6), breaks = seq(0,6,0.1)) +
+  geom_abline(intercept = 2000, slope = 0, color = 'red', size = 1, lty = 'dashed')
 ```
 
 ### Task 14 "Gapminder Data"
