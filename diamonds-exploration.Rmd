@@ -22,9 +22,10 @@ ggplot(data = diamonds, aes(x = price)) +
 ```
 
 ### Task 3 "Price Histogram Summary"
-```{r}
-
-```
+* Noticeable spike in the diamonds' price range from * 625 to 1 250; 
+* Median price is 2 410;
+* Mean price is 3 932.8;
+* Distribution is close to normal.
 
 ### Task 4 "Diamond Counts"
 ```{r}
