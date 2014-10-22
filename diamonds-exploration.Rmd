@@ -176,3 +176,4 @@ table(diamonds$carat)[table(diamonds$carat)>2000]
 ```
 
 ***
+# Problem set 2
