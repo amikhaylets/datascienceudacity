@@ -1,36 +1,28 @@
 Lesson 3
 ========================================================
-
-***
-
 ### Pseudo-Facebook User Data
-
 ```{r Pseudo-Facebook User Data}
 getwd()
 list.files()
 pf <- read.csv('pseudo_facebook.tsv', sep = "\t")
 ```
 
-***
 
 ### Histogram of Users' Birthdays
-
 ```{r Histogram of Users\' Birthdays}
 install.packages('ggplot2')
 library(ggplot2)
 ```
 
-***
 
 ### Faceting
-
 ```{r Faceting}
 qplot(data = pf, x = dob_day) +
   scale_x_discrete(breaks=1:31)
 ```
 
-#### What code would you enter to create a histogram of friend counts?
 
+#### What code would you enter to create a histogram of friend counts?
 ```{r Friend Count}
 qplot(data = pf, x = friend_count,
       xlim = c(0, 1000))
@@ -40,8 +32,8 @@ ggplot(data = pf, aes(x = friend_count)) +
 
 ```
 
-### Faceting Friend Count
 
+### Faceting Friend Count
 ```{r Faceting Friend Count}
 # What code would you add to create a facet the histogram by gender?
 # Add it to the code below.
@@ -51,10 +43,8 @@ qplot(x = friend_count, data = pf, binwidth = 10) +
   facet_wrap(~gender)
 ```
 
-***
 
 ### Omitting NA Values and Statistics 'by' Gender
-
 ```{r Statistics \'by\' Gender}
 qplot(x = friend_count, data = subset(pf, !is.na(gender)), binwidth = 10) +
   scale_x_continuous(limits = c(0, 1000),
@@ -65,19 +55,15 @@ table(pf$gender)
 by(pf$friend_count, pf$gender, summary)
 ```
 
-***
 
 ### Tenure
-
 ```{r Tenure}
 qplot(data = pf, x = tenure, 
       color = I("black"), fill=I("#099dd9"))
 ```
 
-***
 
 #### How would you create a histogram of tenure by year?
-
 ```{r Tenure Histogram by Year}
 qplot(data = pf, x = tenure/365, binwidth = 0.5,
       color = I("black"), fill=I("#099dd9"))
@@ -89,10 +75,8 @@ ggplot(aes(x = tenure/365), data = pf) +
   ylab('Number of users in sample')
 ```
 
-***
 
 ### The Spread of Memes and Add a Scaling Layer
-
 ```{r Add a Scaling Layer}
 install.packages("gridExtra")
 library(gridExtra)
@@ -100,63 +84,47 @@ library(gridExtra)
 p1 <- qplot(x = friend_count, data = pf)
 p2 <- qplot(x = log10(friend_count+1), data = pf)
 p3 <- qplot(x = sqrt(friend_count), data = pf)
-
 grid.arrange(p1, p2, p3, ncol = 1)
-
 ```
 
-***
 
 ### Frequency Polygons
-
 ```{r Frequency Polygons}
 
 ```
 
-***
 
 ### Likes on the Web
-
 ```{r Likes on the Web}
 
 ```
 
-***
 
 ### Box Plots
-
 ```{r Box Plots}
 
 ```
 
-#### Adjust the code to focus on users who have friend counts between 0 and 1000.
 
+#### Adjust the code to focus on users who have friend counts between 0 and 1000.
 ```{r}
 
 ```
 
-***
 
 ### Box Plots, Quartiles, and Friendships
-
 ```{r Box Plots, Quartiles, and Friendships}
 
 ```
 
-#### On average, who initiated more friendships in our sample: men or women?
-Response:
+
 #### Write about some ways that you can verify your answer.
-Response:
 ```{r Friend Requests by Gender}
 
 ```
 
-Response:
-
-***
 
 ### Getting Logical
-
 ```{r Getting Logical}
 
 ```
