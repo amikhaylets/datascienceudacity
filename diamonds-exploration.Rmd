@@ -162,22 +162,17 @@ qplot(data=uniform, x=color, y=price/carat) +
 
 ### Task 13 "Carat frequency polygon"
 ```{r}
-qplot(data = diamonds, x = carat, 
-      binwidth = 0.1,
-      color = I('black'),
-      fill = I('darkgrey')) + 
-  scale_x_continuous(limits = c(0,6), breaks = seq(0,6,0.1)) +
-  geom_abline(intercept = 2000, slope = 0, color = 'red', size = 1, lty = 'dashed')
+table(diamonds$carat)[table(diamonds$carat)>2000]
 ```
 
 ### Task 14 "Gapminder Data"
 ```{r}
-
+#will update when find world internet users it csv format
 ```
 
 ### Task 15 "Exploring your Friends' Birthday"
 ```{r}
-
+#will be updated soon
 ```
 
 ***
