@@ -16,8 +16,7 @@ names(diamonds)
 
 ### Task 2 "Price Histogram"
 ```{r}
-# Histogram of the price of
-# all the diamonds in the diamond data set.
+# Histogram of the price of all the diamonds in the diamond data set.
 ggplot(data = diamonds, aes(x = price)) + 
 	geom_histogram()
 ```
