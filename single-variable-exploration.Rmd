@@ -127,13 +127,19 @@ by(pf$friendships_initiated, pf$gender, summary)
 ```
 
 
-#### Write about some ways that you can verify your answer.
-```{r Friend Requests by Gender}
-
-```
-
-
 ### Getting Logical
 ```{r Getting Logical}
+# The sum() function will not work since mobile_check_in is 
+# a factor variable. You can use the length() function 
+# to determine the number of values in a vector.
+summary(pf$mobile_likes)
 
+pf$mobile_check_in <- NA
+pf$mobile_check_in <- ifelse(pf$mobile_likes > 0, 1, 0)
+pf$mobile_check_in <- factor(pf$mobile_check_in)
+summary(pf$mobile_check_in)
+
+# what percent of check in using the mobile?
+summary(pf$mobile_check_in)
+sum(pf$mobile_check_in == 1)/length(pf$mobile_check_in)
 ```
