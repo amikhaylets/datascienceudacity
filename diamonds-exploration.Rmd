@@ -59,7 +59,30 @@ ggplot(data = diamonds, aes(x = log10(price))) +
 
 ### Task 6 "Price by Cut Histogram"
 ```{r}
+library(gridExtra)
+levels(diamonds$cut)
 
+pbc1 <- ggplot(data = subset(diamonds, cut == "Fair"), aes(x = price)) +
+          geom_histogram(color = "white", fill = "darkblue")  
+
+pbc2 <- ggplot(data = subset(diamonds, cut == "Good"), aes(x = price)) +
+          geom_histogram(color = "white", fill = "darkblue")
+
+pbc3 <- ggplot(data = subset(diamonds, cut == "Very Good"), aes(x = price)) +
+          geom_histogram(color = "white", fill = "darkblue")
+
+pbc4 <- ggplot(data = subset(diamonds, cut == "Premium"), aes(x = price)) +
+          geom_histogram(color = "white", fill = "darkblue")
+
+pbc5 <- ggplot(data = subset(diamonds, cut == "Ideal"), aes(x = price)) +
+          geom_histogram(color = "white", fill = "darkblue")
+
+grid.arrange(pbc1, pbc2, pbc3, pbc4, pbc5, ncol = 3)
+
+#more direct approach
+qplot(x = price, data=diamonds, binwidth = 500) +
+  geom_histogram() +
+  facet_wrap(~cut, ncol=2, scales="free_y")
 ```
 
 ### Task 7 "Price by Cut"
