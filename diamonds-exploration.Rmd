@@ -1,2 +1,15 @@
 Diamonds data set exploration
 ========================================================
+***
+### Problem set 1
+
+# Task 1 "Diamonds"
+```{r}
+# Load ggplot2 and diamonds data set 
+library(ggplot2)
+data(diamonds)
+
+# Checking variables and main parameters
+summary(diamonds)
+names(diamonds)
+```
