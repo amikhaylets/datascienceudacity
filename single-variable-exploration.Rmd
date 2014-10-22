@@ -100,25 +100,30 @@ ggplot(aes(x = friend_count, y = ..count../sum(..count..)), data = subset(pf, !i
 
 ### Likes on the Web
 ```{r Likes on the Web}
-
-```
-
-
-### Box Plots
-```{r Box Plots}
-
-```
-
-
-#### Adjust the code to focus on users who have friend counts between 0 and 1000.
-```{r}
-
+by(pf$www_likes, pf$gender, sum)
 ```
 
 
 ### Box Plots, Quartiles, and Friendships
 ```{r Box Plots, Quartiles, and Friendships}
+# box plot: scale limit removes data from calculation
+qplot(x = gender, y = friend_count,
+	data = subset(pf, !is.na(gender)),
+	geom = "boxplot") +
+	scale_x_continuous(limits = c(0, 1000))
 
+# box plot: coord_cartesian zoom in or zoom out plot without changing data
+qplot(x = gender, y = friend_count,
+	data = subset(pf, !is.na(gender)),
+	geom = "boxplot") +
+	coord_cartesian(ylim = c(0, 250))
+
+# friend requests
+qplot(x = gender, y = friendships_initiated,
+	data = subset(pf, !is.na(gender)),
+	geom = "boxplot")
+
+by(pf$friendships_initiated, pf$gender, summary)
 ```
 
 
