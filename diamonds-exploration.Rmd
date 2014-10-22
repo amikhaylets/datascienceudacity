@@ -1,9 +1,9 @@
 Diamonds data set exploration
 ========================================================
 ***
-### Problem set 1
+# Problem set 1
 
-# Task 1 "Diamonds"
+### Task 1 "Diamonds"
 ```{r}
 # Load ggplot2 and diamonds data set 
 library(ggplot2)
@@ -13,3 +13,78 @@ data(diamonds)
 summary(diamonds)
 names(diamonds)
 ```
+
+### Task 2 "Price Histogram"
+```{r}
+# Histogram of the price of
+# all the diamonds in the diamond data set.
+ggplot(data = diamonds, aes(x = price)) + 
+	geom_histogram()
+```
+
+### Task 3 "Price Histogram Summary"
+```{r}
+
+```
+
+### Task 4 "Diamond Counts"
+```{r}
+
+```
+
+### Task 5 "Cheaper Diamonds"
+```{r}
+
+```
+
+### Task 6 "Price by Cut Histogram"
+```{r}
+
+```
+
+### Task 7 "Price by Cut"
+```{r}
+
+```
+
+### Task 8 "Scales and Multiple Histograms"
+```{r}
+
+```
+
+### Task 9 "Price per Carat by Cut"
+```{r}
+
+```
+
+### Task 10 "Price box plots"
+```{r}
+
+```
+
+### Task 11 "Interquartile Range (IQR)"
+```{r}
+
+```
+
+### Task 12 "Price per Carats Box and Plots by Color"
+```{r}
+
+```
+
+### Task 13 "Carat frequency polygon"
+```{r}
+
+```
+
+### Task 14 "Gapminder Data"
+```{r}
+
+```
+
+### Task 15 "Exploring your Friends' Birthday"
+```{r}
+
+```
+
+***
