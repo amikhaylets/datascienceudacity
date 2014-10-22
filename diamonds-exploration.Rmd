@@ -42,6 +42,18 @@ nrow(subset(diamonds, price >= 15000))
 
 ### Task 5 "Cheaper Diamonds"
 ```{r}
+#some manipulations with x axis
+ggplot(data = diamonds, aes(x = price)) +
+  geom_histogram(color = "white", fill = "darkblue", binwidth = 500) +
+  scale_x_continuous(limits = c(0, 20000), breaks = seq(0, 20000, 2500)) + 
+  xlab("Price of the diamonds") + 
+  ylab("Quantity of the diamonds")
+
+#looks like two patterns of normal distribution
+ggplot(data = diamonds, aes(x = log10(price))) +
+  geom_histogram(color = "white", fill = "darkblue", binwidth = 0.05) + 
+  xlab("Price of the diamonds") + 
+  ylab("Quantity of the diamonds")
 
 ```
 
