@@ -243,18 +243,50 @@ ggplot(diamonds.volume_filtered, aes(x = price, y = volume)) +
 
 ### Task 11 "Mean price by clarity"
 ```{r}
+install.packages("dplyr")
 library(dplyr)
 
-
+diamondsByClarity <- diamonds %.%
+  group_by(clarity) %.%
+  summarise(mean_price = mean(price),
+            median_price = median(price),
+            min_price = min(price),
+            max_price = max(price),            
+            n = n()) %.%
+  arrange(clarity)
+  
+head(diamondsByClarity)
 ```
 
 ### Task 12 "Bar Charts of Mean Price"
 ```{r}
+library(dplyr)
+library(gridExtra)
 
-```
+diamonds_by_clarity <- group_by(diamonds, clarity)
+diamonds_mp_by_clarity <- summarise(diamonds_by_clarity, mean_price = mean(price))
 
-### Task 13 "Trends in Mean Price"
-```{r}
+diamonds_by_color <- group_by(diamonds, color)
+diamonds_mp_by_color <- summarise(diamonds_by_color, mean_price = mean(price))
+
+head(diamonds_by_clarity)
+
+p1 <- ggplot(data = diamonds_by_clarity, aes(x = clarity)) +
+        geom_bar()
+
+p2 <- ggplot(data = diamonds_by_color, aes(x = color)) +
+        geom_bar()
+
+grid.arrange(p1, p2, ncol = 1)
+
+
+p3 <- ggplot(data = diamonds_mp_by_clarity, aes(x = clarity)) +
+        geom_bar()
+
+p4 <- ggplot(data = diamonds_mp_by_color, aes(x = color)) +
+        geom_bar()
+
+grid.arrange(p3, p4, ncol = 1)
 
 ```
 
