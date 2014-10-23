@@ -1,4 +1,4 @@
-Lesson 3
+Tools for single variable exploration
 ========================================================
 ### Pseudo-Facebook User Data
 ```{r Pseudo-Facebook User Data}
