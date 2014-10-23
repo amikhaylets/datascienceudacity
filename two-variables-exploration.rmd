@@ -1,0 +1,137 @@
+Lesson 4
+========================================================
+### Scatterplots
+```{r Scatterplots}
+
+```
+
+
+### ggplot Syntax
+```{r ggplot Syntax}
+
+```
+
+
+### Overplotting
+```{r Overplotting}
+
+```
+
+
+### Coord_trans()
+```{r Coord_trans()}
+
+```
+
+#### Look up the documentation for coord_trans() and add a layer to the plot that transforms friend_count using the square root function. Create your plot!
+```{r}
+
+```
+
+
+### Alpha and Jitter
+```{r Alpha and Jitter}
+
+```
+
+
+### Conditional Means
+```{r Conditional Means}
+
+```
+
+Create your plot!
+
+```{r Conditional Means Plot}
+
+```
+
+
+### Overlaying Summaries with Raw Data
+```{r Overlaying Summaries with Raw Data}
+
+```
+
+
+### Correlation
+```{r Correlation}
+
+```
+
+
+### Correlation on Subsets
+```{r Correlation on Subsets}
+with(                 , cor.test(age, friend_count))
+```
+
+
+## Create Scatterplots
+```{r}
+
+```
+
+
+### Strong Correlations
+```{r Strong Correlations}
+
+```
+
+
+#What's the correlation betwen the two variables? Include the top 5% of values for the variable in the calculation and round to 3 decimal places.
+
+```{r Correlation Calcuation}
+
+```
+
+
+### More Caution with Correlation
+```{r More Caution With Correlation}
+install.packages('alr3')
+library(alr3)
+```
+
+Create your plot!
+
+```{r Temp vs Month}
+
+```
+
+
+### Noisy Scatterplots
+```{r Noisy Scatterplots}
+
+```
+
+### Making Sense of Data
+```{r Making Sense of Data}
+
+```
+
+
+### Understanding Noise: Age to Age Months
+```{r Understanding Noise: Age to Age Months}
+
+```
+
+
+### Age with Months Means
+```{r Age with Months Means}
+
+```
+
+Programming Assignment
+```{r Programming Assignment}
+
+```
+
+
+### Noise in Conditional Means
+```{r Noise in Conditional Means}
+
+```
+
+
+### Smoothing Conditional Means
+```{r Smoothing Conditional Means}
+
+```
