@@ -2,30 +2,34 @@ Lesson 4
 ========================================================
 ### Scatterplots
 ```{r Scatterplots}
-
+library(ggplot2)
+pf <- read.csv("pseudo_facebook.tsv", sep = "\t")
+qplot(data = pf, x = age, y = friend_count)
 ```
 
 
 ### ggplot Syntax
 ```{r ggplot Syntax}
-
+ggplot(aes(x = age, y = friend_count), data = pf) + 
+  geom_point() +
+  xlim(13, 90)
 ```
 
 
 ### Overplotting
 ```{r Overplotting}
-
+ggplot(aes(x = age, y = friend_count), data = pf) + 
+  geom_point(Alpha = 1/20) +
+  xlim(13, 90)
 ```
 
 
 ### Coord_trans()
 ```{r Coord_trans()}
-
-```
-
-#### Look up the documentation for coord_trans() and add a layer to the plot that transforms friend_count using the square root function. Create your plot!
-```{r}
-
+ggplot(aes(x = age, y = friend_count), data = pf) + 
+  geom_point(Alpha = 1/20 position = position_jitter(h = 0)) +
+  xlim(13, 90) +
+  Coord_trans(y = "sqrt")
 ```
 
 
@@ -65,7 +69,7 @@ with(                 , cor.test(age, friend_count))
 ```
 
 
-## Create Scatterplots
+### Create Scatterplots
 ```{r}
 
 ```
@@ -77,9 +81,9 @@ with(                 , cor.test(age, friend_count))
 ```
 
 
-#What's the correlation betwen the two variables? Include the top 5% of values for the variable in the calculation and round to 3 decimal places.
-
 ```{r Correlation Calcuation}
+#What's the correlation betwen the two variables? Include the top 5% of values 
+#for the variable in the calculation and round to 3 decimal places.
 
 ```
 
