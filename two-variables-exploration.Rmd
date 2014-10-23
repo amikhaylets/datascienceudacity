@@ -90,19 +90,22 @@ ggplot(aes(age, friend_count), data = pf) +
 
 ### Correlation
 ```{r Correlation}
-
+cor.test(pf$age, pf$friend_count, method = "pearson")
+cor.test(pf$age, pf$friend_count, method = "student")
+with(pf, cor.test(age, friend_count, method = "pearson"))
 ```
 
 
 ### Correlation on Subsets
 ```{r Correlation on Subsets}
-with(                 , cor.test(age, friend_count))
+with(subset(pf, age <= 70), cor.test(age, friend_count))
 ```
 
 
 ### Create Scatterplots
 ```{r}
-
+ggplot(aes(x = www_likes_received, y = likes_received), data = pf) + 
+	geom_point()
 ```
 
 
