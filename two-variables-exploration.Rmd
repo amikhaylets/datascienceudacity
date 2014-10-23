@@ -74,7 +74,17 @@ ggplot(aes(x = friend_count, y = age), data = pf.fc_by_age) +
 
 ### Overlaying Summaries with Raw Data
 ```{r Overlaying Summaries with Raw Data}
-
+ggplot(aes(age, friend_count), data = pf) +
+	xlim(13, 90) +
+	geom_point(Alpha = 0.005,
+				position = position_jitter(h = 0),
+				color = 'orange') +
+	Coord_trans(y = "sqrt") + 
+	geom_line(stat = "summary", fun.y = mean) +
+	geom_line(stat = "summary", fun.y = quantile, probs = 0.1,
+				linetype = 2, color = "blue") +
+	geom_line(stat = "summary", fun.y = quantile, probs = 0.9,
+				linetype = 2, color = "blue")
 ```
 
 
