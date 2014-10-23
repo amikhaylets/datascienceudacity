@@ -165,15 +165,74 @@ qplot(data=uniform, x=color, y=price/carat) +
 table(diamonds$carat)[table(diamonds$carat)>2000]
 ```
 
-### Task 14 "Gapminder Data"
-```{r}
-#will update when find world internet users it csv format
-```
-
-### Task 15 "Exploring your Friends' Birthday"
-```{r}
-#will be updated soon
-```
 
 ***
 # Problem set 2
+
+### Task 1 "Price vs X"
+```{r}
+
+```
+
+### Task 2 "Correlations"
+```{r}
+
+```
+
+### Task 3 "Price vs Depth"
+```{r}
+
+```
+
+### Task 4 "Adjustments - Price vs Depth"
+```{r}
+
+```
+
+### Task 5 "Typical Depth Range"
+```{r}
+
+```
+
+### Task 6 "Correlation - Price and Depth"
+```{r}
+
+```
+
+### Task 7 "Price vs Carat"
+```{r}
+
+```
+
+### Task 8 "Price vs Volume"
+```{r}
+
+```
+
+### Task 9 "Correlation on subsets"
+```{r}
+
+```
+
+### Task 10 "Adjustments - Price vs Volume"
+```{r}
+
+```
+
+### Task 11 "Mean price by clarity"
+```{r}
+
+```
+
+### Task 12 "Bar Charts of Mean Price"
+```{r}
+
+```
+
+### Task 13 "Trends in Mean Price"
+```{r}
+
+```
+
+***
+# Problem set 3
