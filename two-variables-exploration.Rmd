@@ -35,19 +35,40 @@ ggplot(aes(x = age, y = friend_count), data = pf) +
 
 ### Alpha and Jitter
 ```{r Alpha and Jitter}
-
+ggplot(aes(x = age, y = friendships_initiated), data(pf)) + 
+	geom_jitter(Alpha = 1/10,  position = position_jitter(h = 0))
+	Coord_trans(y = "sqrt")
 ```
 
 
 ### Conditional Means
 ```{r Conditional Means}
+install("dplyr")
+library(dplyr)
 
+age_groups <- group_by(pf, age)
+pf.fc_by_age <- summaries(age_groups,
+					friend_count_mean = mean(friend_count),
+					friend_count_median = median(friend_count),
+					n = n())
+pf.fc_by_age <- arrange(pf.fc_by_age, age)
+head(pf.fc_by_age)
+
+#Introduction to dplyr
+#http://rstudio-pubs-static.s3.amazonaws.com/11068_8bc42d6df61341b2bed45e9a9a3bf9f4.html
+pf %.%
+	group_by(age) %.%
+	summaries(friend_count_mean = mean(friend_count),
+				friend_count_median = median(friend_count),
+				n = n()) %.%
+	arrange(age)
 ```
 
 Create your plot!
 
 ```{r Conditional Means Plot}
-
+ggplot(aes(x = friend_count, y = age), data = pf.fc_by_age) +
+	geom_line()
 ```
 
 
