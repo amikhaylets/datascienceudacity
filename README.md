@@ -1,7 +1,7 @@
 Data analysis with R
 ==================
 
-My working files for online course on Udacity
+My working files for online course on Udacity.
 Here is the link to [course](https://www.udacity.com/course/ud651)
 
 ###Course Summary
