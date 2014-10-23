@@ -111,14 +111,18 @@ ggplot(aes(x = www_likes_received, y = likes_received), data = pf) +
 
 ### Strong Correlations
 ```{r Strong Correlations}
-
+ggplot(aes(x = www_likes_received, y = likes_received), data = pf) + 
+	geom_point() +
+	xlim(0, quantile(pf$www_likes_received, 0.95)) +
+	ylim(0, quantile(pf$likes_received, 0.95))
+	geom_smooth(method = "lm", color = "red")
 ```
 
 
 ```{r Correlation Calcuation}
 #What's the correlation betwen the two variables? Include the top 5% of values 
 #for the variable in the calculation and round to 3 decimal places.
-
+cor.test(pf$www_likes_received, pf$likes_received)
 ```
 
 
@@ -126,18 +130,21 @@ ggplot(aes(x = www_likes_received, y = likes_received), data = pf) +
 ```{r More Caution With Correlation}
 install.packages('alr3')
 library(alr3)
+data(Mitchell)
+?Mitchell
 ```
 
 Create your plot!
 
 ```{r Temp vs Month}
-
+ggplot(data = Mitchell, aes(x = Month, y = Temp)) +
+	geom_point()
 ```
 
 
 ### Noisy Scatterplots
 ```{r Noisy Scatterplots}
-
+cor.test(Mitchell$Month, Mitchell$Temp)
 ```
 
 ### Making Sense of Data
