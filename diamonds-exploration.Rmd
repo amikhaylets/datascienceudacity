@@ -171,31 +171,43 @@ table(diamonds$carat)[table(diamonds$carat)>2000]
 
 ### Task 1 "Price vs X"
 ```{r}
+data(diamonds)
+names(diamonds)
+ggplot(data = diamonds, aes(x = price, y = x)) +
+  geom_point()
 
 ```
 
 ### Task 2 "Correlations"
 ```{r}
-
+cor.test(diamonds$price, diamonds$x)
+cor.test(diamonds$price, diamonds$y)
+cor.test(diamonds$price, diamonds$z)
 ```
 
 ### Task 3 "Price vs Depth"
 ```{r}
+ggplot(data = diamonds, aes(x = depth, y = price)) +
+  geom_point()
 
 ```
 
 ### Task 4 "Adjustments - Price vs Depth"
 ```{r}
+ggplot(data = diamonds, aes(x = depth, y = price)) +
+  geom_point(alpha = 1/100) +
+  scale_x_continuous(breaks = seq(0, 80, 2))
 
 ```
 
 ### Task 5 "Typical Depth Range"
 ```{r}
-
+by(diamonds$price, diamonds$depth, summary)
 ```
 
 ### Task 6 "Correlation - Price and Depth"
 ```{r}
+cor.test(diamonds$price, diamonds$depth)
 
 ```
 
