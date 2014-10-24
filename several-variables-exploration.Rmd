@@ -1,0 +1,139 @@
+Several variables
+========================================================
+### Third Qualitative Variable
+```{r Third Qualitative Variable}
+ggplot(aes(x = gender, y = age),
+       data = subset(pf, !is.na(gender))) + geom_histogram()
+```
+
+
+### Plotting Conditional Summaries
+```{r Plotting Conditional Summaries}
+
+```
+
+
+### Reshaping Data
+```{r}
+install.packages('reshape2')
+library(reshape2)
+```
+
+
+### Ratio Plot
+```{r Ratio Plot}
+
+```
+
+
+### Third Quantitative Variable
+```{r Third Quantitative Variable}
+
+```
+
+
+### Cut a Variable
+```{r Cut a Variable}
+
+```
+
+
+### Plotting it All Together
+```{r Plotting it All Together}
+
+```
+
+
+### Plot the Grand Mean
+```{r Plot the Grand Mean}
+
+```
+
+
+### Friending Rate
+```{r Friending Rate}
+
+```
+
+
+### Friendships Initiated
+
+What is the median friend rate?
+
+What is the maximum friend rate?
+
+```{r Friendships Initiated}
+
+```
+
+
+### Bias-Variance Tradeoff Revisited
+```{r Bias-Variance Tradeoff Revisited}
+
+ggplot(aes(x = tenure, y = friendships_initiated / tenure),
+       data = subset(pf, tenure >= 1)) +
+  geom_line(aes(color = year_joined.bucket),
+            stat = 'summary',
+            fun.y = mean)
+
+ggplot(aes(x = 7 * round(tenure / 7), y = friendships_initiated / tenure),
+       data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket),
+            stat = "summary",
+            fun.y = mean)
+
+ggplot(aes(x = 30 * round(tenure / 30), y = friendships_initiated / tenure),
+       data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket),
+            stat = "summary",
+            fun.y = mean)
+
+ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated / tenure),
+       data = subset(pf, tenure > 0)) +
+  geom_line(aes(color = year_joined.bucket),
+            stat = "summary",
+            fun.y = mean)
+
+```
+
+
+### Histograms Revisited
+```{r Histograms Revisited}
+
+```
+
+
+### Number of Purchases
+```{r Number of Purchases}
+
+```
+
+
+### Prices over Time
+```{r Prices over Time}
+
+```
+
+
+### Looking at Samples of Households
+```{r Looking at Sample of Households}
+
+```
+
+
+### Heat Maps
+```{r}
+nci <- read.table("nci.tsv")
+colnames(nci) <- c(1:64)
+```
+
+```{r}
+nci.long.samp <- melt(as.matrix(nci[1:200,]))
+names(nci.long.samp) <- c("gene", "case", "value")
+head(nci.long.samp)
+
+ggplot(aes(y = gene, x = case, fill = value),
+  data = nci.long.samp) +
+  geom_tile() +
+  scale_fill_gradientn(colours = colorRampPalette(c("blue", "red"))(100))
+```
