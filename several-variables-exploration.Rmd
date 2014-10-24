@@ -108,18 +108,15 @@ ggplot(aes(x = age, y = friend_count),
 
 ### Friending Rate
 ```{r Friending Rate}
-
+with(subset(pf, tenure >= 1), summary(friend_count / tenure))
 ```
 
 
 ### Friendships Initiated
-
-What is the median friend rate?
-
-What is the maximum friend rate?
-
 ```{r Friendships Initiated}
-
+ggplot(aes(x = tenure, y =friendships_initiated / tenure),
+    data = subset(pf, tenure >= 1)) +
+  geom_line(aes(color = year_joined.bucket))
 ```
 
 
@@ -149,7 +146,9 @@ ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated / tenure),
   geom_line(aes(color = year_joined.bucket),
             stat = "summary",
             fun.y = mean)
-
+ggplot(aes(x = tenure, y = friendships_initiated / tenure),
+    data = subset(pf, tenure >= 1)) +
+  geom_smooth(aes(color = year_joined.bucket))
 ```
 
 
