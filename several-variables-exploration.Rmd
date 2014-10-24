@@ -4,12 +4,32 @@ Several variables
 ```{r Third Qualitative Variable}
 ggplot(aes(x = gender, y = age),
        data = subset(pf, !is.na(gender))) + geom_histogram()
+       
+ggplot(aes(x = gender, y = age),
+       data = subset(pf, !is.na(gender))) + geom_boxplot() +
+  stat_summary(fun.y = mean, geom = "point", shape = 4)
+
+ggplot(aes(x = age, y = friend_count),
+       data = subset(pf, !is.na(gender))) + 
+  geom_line(aes(color = gender), stat = "summary", fun.y = median)
+
+library(dplyr)
+pf.fc_by_age_gender <- pf %.%
+  filter(!is.na(gender)) %.%
+  group_by(age, gender) %.%
+  summarise(mean_friend_count = mean(friend_count),
+    median_friend_count = median(friend_count),
+    n = n()) %.%
+  ungroup() %.%
+  arrange(age)
 ```
 
 
 ### Plotting Conditional Summaries
 ```{r Plotting Conditional Summaries}
-
+ggplot(aes(x = age, y = friend_count), 
+            data = subset(pf.1, !is.na(gender))) +   
+  geom_line(aes(color = gender), stat = 'summary', fun.y = median)
 ```
 
 
@@ -17,6 +37,22 @@ ggplot(aes(x = gender, y = age),
 ```{r}
 install.packages('reshape2')
 library(reshape2)
+library(dplyr)
+
+pf.fc_by_age_gender.wide <- dcast(pf.fc_by_age_gender,
+  age ~ gender,
+  value.var = "median_friend_count")
+
+head(pf.fc_by_age_gender.wide)
+
+pf.fc_by_age_gender.wide <- pf.fc_by_age_gender %.% 
+  group_by(age) %.% 
+  summarise(male = friend_count.median[gender = 'male'], 
+                      female = friend_count.median[gender = 'female'], 
+                      ratio = female / male) %.% 
+  arrange(age)
+
+head(pf.fc_by_age_gender.wide)
 ```
 
 
