@@ -154,7 +154,11 @@ ggplot(aes(x = tenure, y = friendships_initiated / tenure),
 
 ### Histograms Revisited
 ```{r Histograms Revisited}
-
+yo <- read.csv("yogurt.csv")
+str(yo)
+yo$id <- factor(yo$id)
+str(yo)
+qplot(data = yo, x = price, fill = I("#F79420"))
 ```
 
 
