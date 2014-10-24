@@ -58,13 +58,21 @@ head(pf.fc_by_age_gender.wide)
 
 ### Ratio Plot
 ```{r Ratio Plot}
+# The linetype parameter can take the values 0-6:
+# 0 = blank, 1 = solid, 2 = dashed
+# 3 = dotted, 4 = dotdash, 5 = longdash
+# 6 = twodash
 
+ggplot(aes(x = age, y = female / male),
+        data = pf.fc_by_age_gender.wide) + 
+  geom_line() +
+  geom_hline(yintercept = 1, alpha = 0.3, linetype = 2)
 ```
 
 
 ### Third Quantitative Variable
 ```{r Third Quantitative Variable}
-
+pf$year_joined <- floor(2014 - pf$tenure/365)
 ```
 
 
