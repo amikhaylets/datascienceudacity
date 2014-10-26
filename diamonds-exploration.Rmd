@@ -308,7 +308,30 @@ ggplot(data = diamonds, aes(x = price)) +
 ### Task 2 "Price vs table color by cut"
 ```{r}
 ggplot(data = diamonds, aes(x = table, y = price)) +
-  geom_point(aes(fill = cut)) +
-  scale_color_brewer(type = "qual")
+  geom_point(aes(color = cut)) +
+  scale_color_brewer(type = "qual") + 
+  coord_cartesian(xlim = c(50, 80)) +
+  scale_x_continuous(breaks = seq(50, 80, 2))
 ```
+
+### Task 3 "Price vs volume and diamond clarity"
+```{r}
+diamonds$volume <- diamonds$x * diamonds$y * diamonds$z
+head(diamonds)
+
+ggplot(data = diamonds, aes(x = volume, y = price)) +
+  geom_point(aes(color = clarity)) +
+  scale_y_log10() + 
+  xlim(0, quantile(diamonds$volume, 0.99)) +
+  scale_color_brewer(type = 'div')
+```
+
+### Task 4 "Price carat bind"
+```{r}
+ggplot(data = diamonds, aes(x = cut, y = price/carat)) +
+  geom_jitter(aes(color = color)) +
+  facet_wrap(~clarity) +
+  scale_color_brewer(type = 'div')
+```
+
 
