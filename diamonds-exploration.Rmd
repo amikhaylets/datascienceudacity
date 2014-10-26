@@ -292,3 +292,16 @@ grid.arrange(p3, p4, ncol = 1)
 
 ***
 # Problem set 3
+
+### Task 1 "Price histogram with facet and color"
+```{r}
+library(ggplot2)
+data(diamonds)
+head(diamonds)
+
+ggplot(data = diamonds, aes(x = price)) +
+  geom_histogram(aes(fill = cut))+
+  scale_x_log10() +
+  facet_wrap(~color)
+```
+
