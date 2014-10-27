@@ -368,3 +368,19 @@ set.seed(20022012)
 diamond_samp <- diamonds[sample(1:length(diamonds$price), 10000), ]
 ggpairs(diamond_samp, params = c(shape = I('.'), outlier.shape = I('.')))
 ```
+
+### The Demand of Diamonds
+```{r}
+library(gridExtra)
+
+plot1 <- qplot(diamonds, price, binwidth = 100, fill = I("#099DD9")) + 
+  ggtitle('Price') +
+  geom_histogram()
+
+plot2 <- qplot(diamonds, price, binwidth = 0.01, fill = I("#F79420")) +
+  ggtitle('Price (log10)') +
+  geom_histogram() + 
+  scale_x_log10()
+
+grid.arrange(plot1, plot2, ncol = 1)
+```
