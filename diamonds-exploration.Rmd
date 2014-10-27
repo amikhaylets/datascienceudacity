@@ -400,3 +400,14 @@ ggplot(aes(carat, price), data = diamonds) +
                      breaks = c(350, 1000, 5000, 10000, 15000)) +
   ggtitle('Price (log10) by Cube-Root of Carat')
 ```
+
+### Overplotting revisited
+```{r}
+ggplot(aes(carat, price), data = diamonds) + 
+  geom_point(alpha = 1/2, size = 3/4, position = "jitter") + 
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+                     breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+                     breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle('Price (log10) by Cube-Root of Carat')
+```
