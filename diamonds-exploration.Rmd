@@ -384,3 +384,19 @@ plot2 <- qplot(diamonds, price, binwidth = 0.01, fill = I("#F79420")) +
 
 grid.arrange(plot1, plot2, ncol = 1)
 ```
+
+### Scatterplot transformation
+```{r}
+# Create a new function to transform the carat variable
+cuberoot_trans = function() trans_new('cuberoot', transform = function(x) x^(1/3),
+                                      inverse = function(x) x^3)
+
+# Use the cuberoot_trans function
+ggplot(aes(carat, price), data = diamonds) + 
+  geom_point() + 
+  scale_x_continuous(trans = cuberoot_trans(), limits = c(0.2, 3),
+                     breaks = c(0.2, 0.5, 1, 2, 3)) + 
+  scale_y_continuous(trans = log10_trans(), limits = c(350, 15000),
+                     breaks = c(350, 1000, 5000, 10000, 15000)) +
+  ggtitle('Price (log10) by Cube-Root of Carat')
+```
