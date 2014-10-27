@@ -493,3 +493,20 @@ models <- mtable(m1, m2, m3, m4, m5)
 ```
 
 ### Predictions
+```{r}
+#Be sure you’ve loaded the library memisc and have m5 saved as an object in your workspace.
+thisDiamond = data.frame(carat = 1.00, cut = "V.Good",
+                         color = "I", clarity="VS1")
+modelEstimate = predict(m5, newdata = thisDiamond,
+                        interval="prediction", level = .95)
+
+dat = data.frame(m4$model, m4$residuals) 
+
+with(dat, sd(m4.residuals)) 
+
+with(subset(dat, carat > .9 & carat < 1.1), sd(m4.residuals)) 
+
+ggplot(aes(y = resid, x = round(carat, 2)), data = diamonds) + 
+  geom_line(stat = "summary", fun.y = sd)
+```
+***
