@@ -168,3 +168,18 @@ def numpy_dot():
     
     return olympic_points_df
 ```
+
+### Project 1
+Task 1
+```python    
+def simple_heuristic():
+    predictions = {}
+    df = pandas.read_csv(file_path)
+    for passenger_index, passenger in df.iterrows():
+        if (passenger['Sex'] == 'female'):
+            predictions[passenger['PassengerId']] = 1
+        else:
+            predictions[passenger['PassengerId']] = 0
+
+    return predictions
+```
