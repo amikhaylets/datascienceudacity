@@ -174,7 +174,6 @@ def simple_heuristic(file_path):
             predictions[passenger['PassengerId']] = 1
         else:
             predictions[passenger['PassengerId']] = 0
-
     return predictions
 ```
 
@@ -188,6 +187,26 @@ def complex_heuristic(file_path):
             predictions[passenger['PassengerId']] = 1
         else:
             predictions[passenger['PassengerId']] = 0
+    return predictions
+```
 
+Task 3
+```python    
+def custom_heuristic(file_path):
+    predictions = {}
+    df = pandas.read_csv(file_path)
+    for passenger_index, passenger in df.iterrows():
+        if passenger ['Sex'] == "female":
+            passenger_id = passenger['PassengerId']
+            predictions[passenger_id] = 1
+        elif passenger['Pclass'] == 1 and passenger['Age'] <= 17:
+            passenger_id = passenger['PassengerId']
+            predictions[passenger_id] = 1
+        elif passenger['Pclass'] == 2 and passenger['Age'] <= 15:
+            passenger_id = passenger['PassengerId']
+            predictions[passenger_id] = 1    
+        else:
+            passenger_id = passenger['PassengerId']
+            predictions[passenger_id] = 0
     return predictions
 ```
