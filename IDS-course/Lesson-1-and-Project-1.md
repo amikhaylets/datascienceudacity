@@ -10,12 +10,6 @@ def create_dataframe():
     '''
     Create a pandas dataframe called 'olympic_medal_counts_df' containing
     the data from the  table of 2014 Sochi winter olympics medal counts.  
-
-    The columns for this dataframe should be called 
-    'country_name', 'gold', 'silver', and 'bronze'.  
-
-    There is no need to  specify row indexes for this dataframe 
-    (in this case, the rows will  automatically be assigned numbered indexes).
     '''
 
     countries = ['Russian Fed.', 'Norway', 'Canada', 'United States',
@@ -172,11 +166,25 @@ def numpy_dot():
 ### Project 1
 Task 1
 ```python    
-def simple_heuristic():
+def simple_heuristic(file_path):
     predictions = {}
     df = pandas.read_csv(file_path)
     for passenger_index, passenger in df.iterrows():
         if (passenger['Sex'] == 'female'):
+            predictions[passenger['PassengerId']] = 1
+        else:
+            predictions[passenger['PassengerId']] = 0
+
+    return predictions
+```
+
+Task 2
+```python    
+def complex_heuristic(file_path):
+    predictions = {}
+    df = pandas.read_csv(file_path)
+    for passenger_index, passenger in df.iterrows():
+        if (passenger['Sex'] == 'female' or (passenger['Pclass'] == 1 and passenger['Age'] < 18)):
             predictions[passenger['PassengerId']] = 1
         else:
             predictions[passenger['PassengerId']] = 0
