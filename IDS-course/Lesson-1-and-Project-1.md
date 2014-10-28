@@ -1,8 +1,8 @@
-Lesson 1 and Project 1
+# Lesson 1 and Project 1
 ***
 
-# Task 1
-'''python
+### Task 1
+```python
 
 from pandas import DataFrame, Series
 
@@ -36,4 +36,4 @@ def create_dataframe():
 	      'bronze': bronze}) 
 
     return olympic_medal_counts_df
-'''
+```
