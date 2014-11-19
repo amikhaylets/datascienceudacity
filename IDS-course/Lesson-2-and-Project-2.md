@@ -46,3 +46,53 @@ def select_first_50(filename):
     aadhaar_solution = pandasql.sqldf(q.lower(), locals())
     return aadhaar_solution  
 ```
+
+### Task 3
+
+```python
+import pandas
+import pandasql
+
+def aggregate_query(filename):
+    # Read aadhaar_data csv to a pandas dataframe.  Afterwards, rename the columns
+    # by replacing spaces with underscores and setting all characters to lowercase, so the
+    # column names more closely resemble columns names one might find in a table.
+    
+    aadhaar_data = pandas.read_csv(filename)
+    aadhaar_data.rename(columns = lambda x: x.replace(' ', '_').lower(), inplace=True)
+
+    # a query selects from the aadhaar_data table how many men and how 
+    # many women over the age of 50 have had aadhaar generated for them in each district
+
+    # The possible columns to select from aadhaar data are:
+    #     1) registrar
+    #     2) enrolment_agency
+    #     3) state
+    #     4) district
+    #     5) sub_district
+    #     6) pin_code
+    #     7) gender
+    #     8) age
+    #     9) aadhaar_generated
+    #     10) enrolment_rejected
+    #     11) residents_providing_email,
+    #     12) residents_providing_mobile_number
+    #
+    # A copy of the aadhaar data passing into this exercise below:
+    # https://www.dropbox.com/s/vn8t4uulbsfmalo/aadhaar_data.csv
+        
+    q = """
+    SELECT 
+    gender, district, sum(aadhaar_generated) 
+    FROM 
+    aadhaar_data 
+    WHERE 
+    age>50 
+    GROUP BY 
+    gender, district;
+    """
+
+    # Execute SQL command against the pandas frame
+    aadhaar_solution = pandasql.sqldf(q.lower(), locals())
+    return aadhaar_solution    
+```
