@@ -243,7 +243,6 @@ ggplot(diamonds.volume_filtered, aes(x = price, y = volume)) +
 
 ### Task 11 "Mean price by clarity"
 ```{r}
-install.packages("dplyr")
 library(dplyr)
 
 diamondsByClarity <- diamonds %.%
