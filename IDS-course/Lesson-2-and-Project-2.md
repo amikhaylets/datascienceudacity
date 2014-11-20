@@ -172,6 +172,7 @@ def max_temp_aggregate_by_fog(filename):
 ```
 
 ### Project 2 Task 3 (2.3)
+
 ```python
 import pandas
 import pandasql
@@ -199,6 +200,39 @@ def avg_min_temperature(filename):
     cast (strftime('%w', date) as integer) = 0
     OR
     cast (strftime('%w', date) as integer) = 6;
+    """
+    
+    #Execute SQL command against the pandas frame
+    mean_temp_weekends = pandasql.sqldf(q.lower(), locals())
+    return mean_temp_weekends
+```
+
+### Project 2 Task 4 (2.4) Mean Temp on Rainy Days
+
+```python
+import pandas
+import pandasql
+
+def avg_min_temperature(filename):
+    '''
+    Function run a SQL query on a dataframe of
+    weather data. Finds the average minimum temperature on rainy days where the 
+    minimum temperature is greater than 55 degrees.
+
+    Weather data below:
+    https://www.dropbox.com/s/7sf0yqc9ykpq3w8/weather_underground.csv
+    '''
+    weather_data = pandas.read_csv(filename)
+
+    q = """
+    SELECT
+    avg(cast (mintempi as integer))
+    FROM
+    weather_data
+    WHERE
+    mintempi > 55
+    AND
+    rain > 0;
     """
     
     #Execute SQL command against the pandas frame
