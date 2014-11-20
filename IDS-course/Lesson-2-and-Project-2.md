@@ -96,3 +96,41 @@ def aggregate_query(filename):
     aadhaar_solution = pandasql.sqldf(q.lower(), locals())
     return aadhaar_solution    
 ```
+
+### Project 2 Task 1 (2.1)
+
+```python
+import pandas
+import pandasql
+
+
+def num_rainy_days(filename):
+    '''
+    Function run a SQL query on a dataframe of
+    weather data.  The SQL query return one column and
+    one row - a count of the number of days in the dataframe where
+    the rain column is equal to 1 (i.e., the number of days it
+    rained).
+    
+    SQL count fuction:
+    https://dev.mysql.com/doc/refman/5.1/en/counting-rows.html
+    
+    The weather data that we are passing in below:
+    https://www.dropbox.com/s/7sf0yqc9ykpq3w8/weather_underground.csv
+    '''
+    weather_data = pandas.read_csv(filename)
+
+    q = """
+    SELECT
+    COUNT(*)
+    FROM
+    weather_data
+    WHERE
+    rain > 0;
+    """
+    
+    #Execute SQL command against the pandas frame
+    rainy_days = pandasql.sqldf(q.lower(), locals())
+    return rainy_days
+
+```
