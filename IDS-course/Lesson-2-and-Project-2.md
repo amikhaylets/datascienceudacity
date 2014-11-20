@@ -134,3 +134,39 @@ def num_rainy_days(filename):
     return rainy_days
 
 ```
+
+### Project 2 Task 2 (2.2)
+
+```python
+import pandas
+import pandasql
+
+
+def max_temp_aggregate_by_fog(filename):
+    '''
+    Function should run a SQL query on a dataframe of
+    weather data.  The SQL query return two columns and
+    two rows - whether it was foggy or not (0 or 1) and the max
+    maxtempi for that fog value (i.e., the maximum max temperature
+    for both foggy and non-foggy days).
+    
+    Weather data that we are passing in below:
+    https://www.dropbox.com/s/7sf0yqc9ykpq3w8/weather_underground.csv
+    '''
+    weather_data = pandas.read_csv(filename)
+
+    q = """
+    SELECT
+    fog,
+    max(cast (maxtempi as integer))
+    FROM
+    weather_data
+    GROUP BY
+    fog;
+    """
+    
+    #Execute SQL command against the pandas frame
+    rainy_days = pandasql.sqldf(q.lower(), locals())
+    return rainy_days
+
+```
