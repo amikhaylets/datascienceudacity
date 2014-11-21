@@ -305,3 +305,19 @@ def create_master_turnstile_file(filenames, output_file):
                         master_file.write(line)
 
 ```
+
+### Project 2 Task 7 (2.7)
+
+```python
+import pandas
+
+def filter_by_regular(filename):
+    '''
+    Function read the csv file located at filename into a pandas dataframe,
+    and filter the dataframe to only rows where the 'DESCn' column has the value 'REGULAR'.
+    '''
+    
+    turnstile_data = pandas.read_csv(filename)
+    turnstile_data = turnstile_data[turnstile_data['DESCn'] == 'REGULAR']
+    return turnstile_data
+```
