@@ -321,3 +321,26 @@ def filter_by_regular(filename):
     turnstile_data = turnstile_data[turnstile_data['DESCn'] == 'REGULAR']
     return turnstile_data
 ```
+
+### Project 2 Task 8 (2.8)
+
+```python
+import pandas
+
+def get_hourly_entries(df):
+    '''
+    The data in the MTA Subway Turnstile data reports on the cumulative
+    number of entries and exits per row.  Dataframe called df that contains only 
+    the rows for a particular turnstile machine (i.e., unique SCP, C/A, and UNIT).  
+    Function change cumulative entry numbers to a count of entries since the last reading
+    (i.e., entries since the last row in the dataframe).
+    
+    More specifically, it does two things:
+       1) Create a new column called ENTRIESn_hourly
+       2) Assign to the column the difference between ENTRIESn of the current row 
+          and the previous row. If there is any NaN, fill/replace it with 1.
+    '''
+    df['ENTRIESn_hourly'] = df['ENTRIESn'] - df['ENTRIESn'].shift(1)
+    df = df.fillna(1)
+    return df
+```
