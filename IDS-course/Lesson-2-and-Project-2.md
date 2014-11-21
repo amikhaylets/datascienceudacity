@@ -390,3 +390,23 @@ def time_to_hour(time):
     hour = int(time[0:2])
     return hour
 ```
+
+### Project 2 Task 11 (2.11)
+
+```python
+import datetime
+
+def reformat_subway_dates(date):
+    '''
+    The dates in subway data are formatted in the format month-day-year.
+    The dates in weather underground data are formatted year-month-day.
+    
+    In order to join these two data sets together, we'll want the dates formatted
+    the same way.  Function takes as its input a date in the MTA Subway
+    data format, and returns a date in the weather underground format.
+    '''
+
+    date_formatted = datetime.datetime.strptime(date, '%m-%d-%y').strftime('%Y-%m-%d')
+    return date_formatted
+
+```
