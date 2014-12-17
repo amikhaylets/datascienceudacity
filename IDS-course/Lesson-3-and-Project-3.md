@@ -19,7 +19,7 @@ def compare_averages():
 	baseball_data_right = baseball_data[baseball_data['handedness'] == 'R']
 
 	# perfrom wlch's t-test
-	result = scipy.stats.ttest_ind(baseball_data_left)
+	result = scipy.stats.ttest_ind(baseball_data_left['avg'], baseball_data_right['avg'], equal_var=False)
 
 	# produce desired result
 	if result[1] <= 0.05:
