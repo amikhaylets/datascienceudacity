@@ -81,3 +81,26 @@ def compute_r_squared(data, predictions):
 
     return r_squared
 ```
+
+### Project 3.1 - Exploratory Data Analysis
+```python
+import numpy as np
+import pandas
+import matplotlib.pyplot as plt
+
+def entries_histogram(turnstile_weather):
+    '''
+    Plot two histograms on the same axes to show hourly
+    entries when raining vs. when not raining. Here's an example on how
+    to plot histograms with pandas and matplotlib
+    
+    You can see the information contained within the turnstile weather data here:
+    https://www.dropbox.com/s/meyki2wl9xfa7yk/turnstile_data_master_with_weather.csv
+    '''
+    
+    plt.figure()
+    rain = turnstile_weather["ENTRIESn_hourly"][turnstile_weather["rain"]==1].hist()
+    no_rain = turnstile_weather["ENTRIESn_hourly"][turnstile_weather["rain"]==0].hist()
+    
+    return plt
+```
