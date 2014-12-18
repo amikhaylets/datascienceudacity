@@ -158,3 +158,27 @@ def plot_residuals(turnstile_weather, predictions):
     (turnstile_weather['ENTRIESn_hourly'] - predictions).hist(bins=50)
     return plt
 ```
+
+### Project 3.7 - Compute R^2
+```python
+import numpy as np
+import scipy
+import matplotlib.pyplot as plt
+import sys
+
+def compute_r_squared(data, predictions):
+    '''
+    In exercise 5, we calculated the R^2 value for you. But why don't you try and
+    and calculate the R^2 value yourself.
+    
+    Fnction computes and returns the coefficient of determination (R^2)
+    for this data.  
+    '''
+    
+    mean = np.mean(data)
+    a = np.sum(np.square(data - predictions))
+    b = np.sum(np.square(data - mean))
+    r_squared = 1.0 - (a/b)
+    
+    return r_squared
+```
