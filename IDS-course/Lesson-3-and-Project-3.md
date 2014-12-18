@@ -138,3 +138,23 @@ def mann_whitney_plus_means(turnstile_weather):
     
     return with_rain_mean, without_rain_mean, U, p # leave this line for the grader
 ```
+
+### Project 3.6 - Plotting Residuals
+```python
+import numpy as np
+import scipy
+import matplotlib.pyplot as plt
+
+def plot_residuals(turnstile_weather, predictions):
+    '''
+    Make a histogram of the residuals
+    (that is, the difference between the original hourly entry data and the predicted values).
+
+    Reading a bit on this webpage might be useful:
+    http://www.itl.nist.gov/div898/handbook/pri/section2/pri24.htm
+    '''
+    
+    plt.figure()
+    (turnstile_weather['ENTRIESn_hourly'] - predictions).hist(bins=50)
+    return plt
+```
