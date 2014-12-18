@@ -182,3 +182,25 @@ def compute_r_squared(data, predictions):
     
     return r_squared
 ```
+
+### Project 3.8 - More Linear Regression (Optional)
+```python
+import numpy as np
+import pandas
+import scipy
+import statsmodels.api as sm
+
+"""
+One of the advantages of the statsmodels implementation is that it gives 
+easy access to the values of the coefficients theta. This can help infer relationships 
+between variables in the dataset.
+"""
+
+def predictions(weather_turnstile):
+
+    features = weather_turnstile[['rain', 'precipi', 'Hour', 'meantempi', 'EXITSn_hourly', 'fog', 'thunder']]
+    model = sm.formula.ols('ENTRIESn_hourly ~ rain + precipi + Hour + meantempi + EXITSn_hourly + fog + thunder', data=weather_turnstile).fit()
+    prediction = model.predict(features)
+
+    return prediction
+```
