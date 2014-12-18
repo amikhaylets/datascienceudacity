@@ -65,3 +65,19 @@ def gradient_descent(features, values, theta, alpha, num_iterations):
 
     return theta, pandas.Series(cost_history) 
 ```
+
+### Calculate R^2
+```python
+import numpy as np
+
+def compute_r_squared(data, predictions):
+    # Function that, given two input numpy arrays, 'data', and 'predictions,'
+    # returns the coefficient of determination, R^2, for the model that produced 
+
+    mean = np.mean(data)
+    a = np.sum(np.square(data - predictions))
+    b = np.sum(np.square(data - mean))
+    r_squared = 1.0 - (a/b)
+
+    return r_squared
+```
