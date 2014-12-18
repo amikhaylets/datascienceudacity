@@ -27,3 +27,41 @@ def compare_averages():
 	else:
 		return (True, result)
 ```
+
+### Gradient Descent in Python
+```python
+import numpy
+import pandas
+
+def compute_cost(features, values, theta):
+    """
+    Compute the cost of a list of parameters, theta, given a list of features (input
+    data points) and values (output data points).
+    """
+    m = len(values)
+    sum_of_square_errors = numpy.square(numpy.dot(features, theta) - values).sum()
+    cost = sum_of_square_errors / (2*m)
+
+    return cost
+
+def gradient_descent(features, values, theta, alpha, num_iterations):
+    """
+    Perform gradient descent given a data set with an arbitrary number of features.
+    """
+
+    cost_history = []
+
+    m = len(values) * 1.0
+    
+    for i in range(0,num_iterations):
+    	# Calculate cost
+	cost = compute_cost(features, values, theta)
+	
+	# Append cost to history
+	cost_history.append(cost)
+	
+	# Calculate new theta
+	theta = theta + alpha * (1/m) * numpy.dot((values - numpy.dot(features,theta)),features)
+
+    return theta, pandas.Series(cost_history) 
+```
