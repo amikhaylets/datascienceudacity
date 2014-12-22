@@ -22,3 +22,19 @@ def lineplot(hr_year_csv):
                 geom_line(color='red')
     return gg
 ```
+
+### Plotting Line Charts
+```python
+from pandas import *
+from ggplot import *
+
+import pandas
+
+def lineplot_compare(hr_by_team_year_sf_la_csv):
+    # Function, lineplot_compare, will read a csv file
+    # called hr_by_team_year_sf_la.csv and plot it using pandas and ggplot2.
+    
+    gg = ggplot(pandas.read_csv(hr_by_team_year_sf_la_csv), aes('yearID', 'HR', color='teamID')) + \
+                geom_line()
+    return gg
+```
