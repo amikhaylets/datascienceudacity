@@ -1,4 +1,4 @@
-Data Science Learnign Materials and Educational Projects
+Data Science Learnign Materials
 ==================
 
 My working files for Udacity Nanodegree specialization
